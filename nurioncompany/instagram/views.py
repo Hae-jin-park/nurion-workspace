@@ -11,4 +11,5 @@ def post_list(request):
         qstr = qstr.filter(message__icontains=q)
     return render(request, 'instagram/post_list.html', {
         'post_list': qstr,
+        'q': q,
     })
