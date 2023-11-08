@@ -1,0 +1,7 @@
+{% extends "../base.html" %} {% block content %}
+<h2>Author : {{post.author }}</h2>
+{% if post.photo %}
+<img src="{{post.photo.url}}" />
+{% endif %}
+<p>{{post.message}}</p>
+{% endblock %}

@@ -17,18 +17,20 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 
+from django.views.generic import TemplateView, RedirectView
 from django.conf import settings
 
 urlpatterns = [
+    path('', RedirectView.as_view(pattern_name="instagram:post_list"), name='home'),
     path('admin/', admin.site.urls),
-    path('accounts/',include('accounts.urls')),
+    path('accounts/', include('accounts.urls')),
     path('blog1', include('blog1.urls')),
     path('instagram/', include('instagram.urls'))
 ]
 
-if settings.DEBUG: #디버그 모드일 경우...
+if settings.DEBUG:  # 디버그 모드일 경우...
     import debug_toolbar
-    
+
     urlpatterns += static(settings.MEDIA_URL,
                           document_root=settings.MEDIA_ROOT)
     urlpatterns += [path('__debug__/', include(debug_toolbar.urls))]
