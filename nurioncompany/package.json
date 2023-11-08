@@ -2,7 +2,7 @@
   "scripts": {
     "startapp" : "python3 manage.py startapp $APP_NAME",
     "server" : "python3 manage.py runserver 0.0.0.0:8000",
-    "makemigrate" : "python3 manage.py makemigrations $APP_NAME",
+    "makemigrate" : "python3 manage.py makemigrations",
     "migrateall" : "python3 manage.py migrate",
     "migrate" : "python3 manage.py migrate $APP_NAME",
     "shellplus" : "python3 manage.py shell_plus",
