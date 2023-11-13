@@ -1,4 +1,6 @@
-{% extends "../base.html" %} {% block content %}
+{% extends "../base.html" %}
+{% load django_bootstrap5 %}
+{% block content %}
 <form action="" method="get">
   <div class="row g-3 align-items-center">
     <div class="col-auto">
@@ -25,9 +27,14 @@
   <tbody>
     {% for post in post_list %}
     <tr>
-      <td>{{post.message}}</td>
+      <td>{{post.pk}}</td>
+      <td>
+        <a href="{% url "instagram:post_detail" post.pk %}">
+          {{post.message}}
+        </a>
+      </td>
       {% if post.photo %}
-      <td><img src="{{post.photo.url}}" width="100px" /></td>
+      <td><a href="{% url "instagram:post_detail" post.pk %}"><img src="{{post.photo.url}}" width="100px" /></a></td>
       {% else %}
       <td>No Photo Detected</td>
       {% endif %}
@@ -35,4 +42,5 @@
     {% endfor %}
   </tbody>
 </table>
+{% bootstrap_pagination page_obj size="lg" justify_content="center" %}
 {% endblock %}
