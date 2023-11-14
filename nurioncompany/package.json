@@ -9,6 +9,6 @@
     "sqlplus" : "python3 manage.py shell_plus --print-sql",
     "diagram" : "python3 manage.py graph_models -a --dot -o model_diagram.dot",
     "pngdot" : "dot -Tpng model_diagram.dot dot -o model_diagram.png",
-    "jupyter" : "jupyter notebook"
+    "jupyter" : "jupyter notebook --no-browser"
   }
 }

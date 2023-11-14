@@ -3,6 +3,7 @@ from .models import Post
 from .customviews import *
 from django.views.generic import ListView, DetailView, ArchiveIndexView
 from django.http import HttpResponse, HttpRequest
+from .forms import PostForm
 # Create your views here.
 
 
@@ -39,3 +40,33 @@ post_detail = PostDetailView.as_view()
 #     return HttpResponse(f"{year}년 archives")
 
 post_archive = ArchiveIndexView.as_view(model=Post, date_field='created_at')
+
+
+@login_required
+def post_new(request):
+    if request.method == 'POST':
+        form = PostForm(request.POST, request.FILES)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.author = request.user #현재 로그인 User Instance
+            post.save()
+            return redirect(post)
+    else:
+        form = PostForm()
+    return render(request, 'instagram/post_form.html', {
+        'form': form,
+    })
+
+def post_update(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+
+    if request.method == 'POST':
+        form = PostForm(request.POST, request.FILES)
+        if form.is_valid():
+            post = form.save(commit=True)
+            return redirect(post)
+    else:
+        form = PostForm(instance=post)
+    return render(request, 'instagram/post_form.html', {
+        'form': form,
+    })

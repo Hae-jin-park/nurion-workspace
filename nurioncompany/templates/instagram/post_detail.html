@@ -3,5 +3,13 @@
 {% if post.photo %}
 <img src="{{post.photo.url}}" />
 {% endif %}
-<p>{{post.message}}</p>
+<p>{{post.message|linebreaks}}</p>
+<hr/>
+
+<a href="{% url "instagram:post_list" %}" class="btn btn-primary">
+  목록
+</a>
+<a href="{% url "instagram:post_update" post.pk %}" class="btn btn-warning">
+  수정
+</a>
 {% endblock %}
