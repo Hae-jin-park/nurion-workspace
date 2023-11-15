@@ -21,7 +21,7 @@ from .forms import PostForm
 #         'post_list': qstr,
 #         'q': q,
 #     })
-post_list = ListView.as_view(model=Post, paginate_by=10)
+post_list = ListView.as_view(model=Post, paginate_by=50)
 
 
 # post_list = ListView.as_view(model=Post)
