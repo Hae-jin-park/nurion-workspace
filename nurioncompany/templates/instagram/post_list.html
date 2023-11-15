@@ -1,5 +1,5 @@
 {% extends "../base.html" %}
-{% load django_bootstrap5 %}
+{% comment %} {% load django_bootstrap5 %} {% endcomment %}
 {% block content %}
 <form action="" method="get">
   <div class="row g-3 align-items-center">
@@ -33,7 +33,7 @@
       <td>{{post.pk}}</td>
       <td>
         <a href="{% url "instagram:post_detail" post.pk %}">
-          {{post.message}}
+          {{post.message|linebreaks}}
         </a>
       </td>
       {% if post.photo %}
@@ -45,5 +45,5 @@
     {% endfor %}
   </tbody>
 </table>
-{% bootstrap_pagination page_obj size="lg" justify_content="center" %}
+{% comment %} {% bootstrap_pagination page_obj size="lg" justify_content="center" %} {% endcomment %}
 {% endblock %}
