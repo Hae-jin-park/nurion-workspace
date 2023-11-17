@@ -3,7 +3,7 @@
 <hr />
 {% if user.profile %}
 <ul>
-  <li>{{user.profile.address}}</li>
+  <li class='addr'>{{user.profile.address}}</li>
   <li>{{user.profile.zipcode}}</li>
 </ul>
 {% endif %} <a href="{% url "profile_update" %}" class="btn btn-secondary">정보 수정하기</a> {% endblock %}

@@ -16,6 +16,12 @@ body {
   background: #4a98f7;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
+
+.nav-links {
+  margin-top: 0;
+  margin-bottom: 0 !important;
+}
+
 .nav,
 .nav .nav-links {
   display: flex;
